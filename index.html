@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Praktikum 12 | HTML DOM | 20240140056</title>
+  <meta name="description"
+    content="Form interaktif HTML DOM - Praktikum 12 Pengembangan Desain Web - NIM 20240140056" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Mono:wght@400;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0a0a0f',
+            surface: '#12121a',
+            card: '#1a1a28',
+            border: '#2a2a42',
+            accent: '#7c6dfa',
+            accent2: '#fa6d8a',
+            accent3: '#6dfad3',
+            muted: '#7070a0',
+          },
+          fontFamily: {
+            sans: ['"Google Sans"', 'Roboto', 'sans-serif'],
+            mono: ['"Google Sans Mono"', '"Roboto Mono"', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-bg text-[#e8e8f0] min-h-screen font-sans">
+
+  <div class="relative z-10 max-w-[1100px] mx-auto px-8 py-12 pb-24">
+
+    <header class="mb-14 anim-fade-down">
+      <div
+        class="inline-flex items-center gap-2 bg-[rgba(124,109,250,0.15)] border border-[rgba(124,109,250,0.35)] rounded-full px-4 py-1.5 font-mono text-[11px] text-accent tracking-widest uppercase mb-5">
+        <span class="badge-dot w-[7px] h-[7px] rounded-full bg-accent flex-shrink-0 inline-block"></span>
+        Praktikum 12 | JavaScript HTML DOM
+      </div>
+
+      <h1 class="text-[clamp(28px,6vw,48px)] font-bold leading-tight tracking-tight">
+        Form <span class="gradient-text">Interaktif</span><br />dengan HTML DOM
+      </h1>
+
+      <div class="mt-3 font-mono text-xs text-muted flex flex-wrap gap-5">
+        <span>NIM: 20240140056</span>
+        <span>Matakuliah: Pengembangan Desain Web</span>
+        <span>Tugas12_20240140056</span>
+      </div>
+    </header>
+
+    <div class="flip-wrapper" id="flip-wrapper">
+      <div class="flip-inner" id="flip-inner">
+
+        <div class="flip-front">
+          <div
+            class="bg-card border border-border rounded-[20px] p-9 relative overflow-hidden card-accent anim-fade-up">
+
+            <div class="flex items-center gap-3 mb-7">
+              <div
+                class="w-[42px] h-[42px] rounded-[10px] flex items-center justify-center text-xl flex-shrink-0 bg-[rgba(124,109,250,0.18)]">
+                📋</div>
+              <div>
+                <div class="text-lg font-bold tracking-tight">Data Mahasiswa</div>
+                <div class="text-xs text-muted font-mono mt-0.5">Isi formulir berikut dengan lengkap</div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1">
+              <div class="mb-5">
+                <label for="nama"
+                  class="block text-[13px] font-semibold tracking-widest uppercase text-muted mb-2.5">Nama
+                  Lengkap</label>
+                <input type="text" id="nama" class="form-input" placeholder="Masukkan nama lengkap Anda..." />
+              </div>
+
+              <div class="mb-5">
+                <label for="nim"
+                  class="block text-[13px] font-semibold tracking-widest uppercase text-muted mb-2.5">NIM</label>
+                <input type="text" id="nim" class="form-input" placeholder="Contoh: 20240140056" />
+              </div>
+
+              <div class="mb-5">
+                <label for="prodi"
+                  class="block text-[13px] font-semibold tracking-widest uppercase text-muted mb-2.5">Program
+                  Studi</label>
+                <div class="select-wrap">
+                  <select id="prodi" class="form-input">
+                    <option value="">-- Pilih Program Studi --</option>
+                    <option value="Teknik Informatika">Teknik Informatika</option>
+                    <option value="Sistem Informasi">Sistem Informasi</option>
+                    <option value="Teknik Elektro">Teknik Elektro</option>
+                    <option value="Teknik Sipil">Teknik Sipil</option>
+                    <option value="Manajemen">Manajemen</option>
+                    <option value="Akuntansi">Akuntansi</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="mb-5">
+                  <label for="semester"
+                    class="block text-[13px] font-semibold tracking-widest uppercase text-muted mb-2.5">Semester</label>
+                  <div class="select-wrap">
+                    <select id="semester" class="form-input">
+                      <option value="">-- Pilih Semester --</option>
+                      <option value="Semester 1">Semester 1</option>
+                      <option value="Semester 2">Semester 2</option>
+                      <option value="Semester 3">Semester 3</option>
+                      <option value="Semester 4">Semester 4</option>
+                      <option value="Semester 5">Semester 5</option>
+                      <option value="Semester 6">Semester 6</option>
+                      <option value="Semester 7">Semester 7</option>
+                      <option value="Semester 8">Semester 8</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-5">
+                  <label for="kelas"
+                    class="block text-[13px] font-semibold tracking-widest uppercase text-muted mb-2.5">Kelas</label>
+                  <div class="select-wrap">
+                    <select id="kelas" class="form-input">
+                      <option value="">-- Pilih Kelas --</option>
+                      <option value="Kelas A">Kelas A</option>
+                      <option value="Kelas B">Kelas B</option>
+                      <option value="Kelas C">Kelas C</option>
+                      <option value="Kelas D">Kelas D</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-5">
+                <label for="tgl-lahir"
+                  class="block text-[13px] font-semibold tracking-widest uppercase text-muted mb-2.5">Tanggal
+                  Lahir</label>
+                <input type="date" id="tgl-lahir" class="form-input" />
+              </div>
+
+              <div class="mb-5">
+                <label for="tgl-daftar"
+                  class="block text-[13px] font-semibold tracking-widest uppercase text-muted mb-2.5">Tanggal Daftar
+                  Kuliah</label>
+                <input type="date" id="tgl-daftar" class="form-input" />
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-3.5 mt-4 pt-2 border-t border-border/30">
+              <button class="btn-primary" onclick="tampilkanData()">
+                Tampilkan Data
+              </button>
+              <button class="btn-secondary" onclick="resetForm()">
+                <span>↺</span> Reset
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-back">
+          <div class="bg-surface border-[1.5px] border-border rounded-[20px] overflow-hidden h-full">
+            <div
+              class="bg-card border-b border-border px-6 py-4 flex items-center gap-2 font-mono text-[11px] text-muted">
+              <span class="dot r"></span>
+              <span class="dot y"></span>
+              <span class="dot g"></span>
+              <span class="ml-1.5">output | DOM result</span>
+              <div class="ml-auto">
+                <button class="flip-btn" onclick="kembaliKeForm()">
+                  ↩ Kembali ke Form
+                </button>
+              </div>
+            </div>
+
+            <div class="p-9">
+              <div class="flex items-center gap-2 mb-8">
+                <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl bg-[rgba(109,250,211,0.18)]">✅
+                </div>
+                <div class="font-bold text-xl tracking-tight">Hasil Data Mahasiswa</div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 divide-y md:divide-y-0 divide-border">
+                <div class="space-y-1">
+                  <div class="flex items-start gap-4 py-4 border-b border-border md:border-b-0">
+                    <span
+                      class="font-mono text-[11px] uppercase tracking-widest text-muted min-w-[120px] pt-0.5">Nama</span>
+                    <span class="text-base font-semibold text-[#e8e8f0] flex-1" id="out-nama">|</span>
+                  </div>
+                  <div class="flex items-start gap-4 py-4 border-b border-border md:border-b-0">
+                    <span
+                      class="font-mono text-[11px] uppercase tracking-widest text-muted min-w-[120px] pt-0.5">NIM</span>
+                    <span class="text-base font-semibold text-[#e8e8f0] flex-1" id="out-nim">|</span>
+                  </div>
+                  <div class="flex items-start gap-4 py-4 border-b border-border md:border-b-0">
+                    <span
+                      class="font-mono text-[11px] uppercase tracking-widest text-muted min-w-[120px] pt-0.5">Program
+                      Studi</span>
+                    <span class="text-base font-semibold text-[#e8e8f0] flex-1" id="out-prodi">|</span>
+                  </div>
+                  <div class="flex items-start gap-4 py-4 border-b border-border md:border-b-0">
+                    <span
+                      class="font-mono text-[11px] uppercase tracking-widest text-muted min-w-[120px] pt-0.5">Usia</span>
+                    <span class="text-base font-semibold text-[#e8e8f0] flex-1" id="out-usia">|</span>
+                  </div>
+                </div>
+
+                <div class="space-y-1">
+                  <div class="flex items-start gap-4 py-4 border-b border-border md:border-b-0">
+                    <span
+                      class="font-mono text-[11px] uppercase tracking-widest text-muted min-w-[120px] pt-0.5">Semester</span>
+                    <span class="text-base font-semibold text-[#e8e8f0] flex-1" id="out-semester">|</span>
+                  </div>
+                  <div class="flex items-start gap-4 py-4 border-b border-border md:border-b-0">
+                    <span
+                      class="font-mono text-[11px] uppercase tracking-widest text-muted min-w-[120px] pt-0.5">Kelas</span>
+                    <span class="text-base font-semibold text-[#e8e8f0] flex-1" id="out-kelas">|</span>
+                  </div>
+                  <div class="flex items-start gap-4 py-4 border-b border-border md:border-b-0">
+                    <span
+                      class="font-mono text-[11px] uppercase tracking-widest text-muted min-w-[120px] pt-0.5">Tanggal
+                      Lahir</span>
+                    <span class="text-base font-semibold text-[#e8e8f0] flex-1" id="out-tgl-lahir">|</span>
+                  </div>
+                  <div class="flex items-start gap-4 py-4">
+                    <span class="font-mono text-[11px] uppercase tracking-widest text-muted min-w-[120px] pt-0.5">Tgl
+                      Daftar</span>
+                    <span class="text-base font-semibold text-[#e8e8f0] flex-1" id="out-tgl-daftar">|</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-3.5 mt-8">
+      <div
+        class="flex-1 min-w-[140px] bg-card border border-border rounded-[14px] p-5 text-center transition-transform duration-200 hover:-translate-y-1"
+        id="chip-select">
+        <div class="point-num" id="pts-select">50</div>
+        <div class="font-mono text-[11px] text-muted mt-1">poin | data select</div>
+      </div>
+      <div
+        class="flex-1 min-w-[140px] bg-card border border-border rounded-[14px] p-5 text-center transition-transform duration-200 hover:-translate-y-1"
+        id="chip-date">
+        <div class="point-num" id="pts-date">50</div>
+        <div class="font-mono text-[11px] text-muted mt-1">poin | data tanggal</div>
+      </div>
+      <div
+        class="flex-1 min-w-[140px] bg-card border border-border rounded-[14px] p-5 text-center transition-transform duration-200 hover:-translate-y-1">
+        <div class="point-num earned" id="pts-total">0</div>
+        <div class="font-mono text-[11px] text-muted mt-1">total poin diraih</div>
+      </div>
+    </div>
+
+    <footer class="text-center mt-16 font-mono text-[11px] text-muted tracking-widest anim-footer">
+      &copy; 2026 | Tugas12_20240140056 | Pengembangan Desain Web
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
